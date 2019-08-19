@@ -322,7 +322,7 @@
       
 
       
-        <h1 id="服务器环境搭建"><a href="#服务器环境搭建" class="headerlink" title="服务器环境搭建"></a>服务器环境搭建</h1><h2 id="服务器软件"><a href="#服务器软件" class="headerlink" title="服务器软件"></a>服务器软件</h2><p>HTTP Server 运行于服务器之上，主要工作有：</p>
+        <h1><span id="服务器环境搭建">服务器环境搭建</span></h1><h2><span id="服务器软件">服务器软件</span></h2><p>HTTP Server 运行于服务器之上，主要工作有：</p>
 <ul>
 <li>监听端口</li>
 <li>接收 socket 连接</li>
@@ -333,7 +333,7 @@
 <li>关闭连接或者 Keep-Alive</li>
 </ul>
 <p>采用动静态资源分离的方式，选用 Nginx 处理静态资源请求，Tomcat 处理动态资源请求。</p>
-<h3 id="Ngnix-安装"><a href="#Ngnix-安装" class="headerlink" title="Ngnix 安装"></a>Ngnix 安装</h3><p>WEB 服务器，处理静态资源请求的同时，将动态请求反向代理至 Tomcat。</p>
+<h3><span id="ngnix-安装">Ngnix 安装</span></h3><p>WEB 服务器，处理静态资源请求的同时，将动态请求反向代理至 Tomcat。</p>
 <p><strong>Ubuntu:</strong></p>
 <p><code>sudo apt-get install nginx</code></p>
 <p><strong>CentOS:</strong></p>
@@ -344,7 +344,7 @@
 <p><strong>OR</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo service nginx start</span><br><span class="line">sudo service nginx stop</span><br><span class="line">sudo service nginx restart</span><br></pre></td></tr></table></figure>
 
-<h3 id="Tomcat-安装"><a href="#Tomcat-安装" class="headerlink" title="Tomcat 安装"></a>Tomcat 安装</h3><p>应用服务器，可保证应用在该容器内执行。Tomcat 是支持运行 Servlet/JSP 应用程序的容器，可运行 Java 程序动态生成资源内容，因此需系统中有 Java 环境。</p>
+<h3><span id="tomcat-安装">Tomcat 安装</span></h3><p>应用服务器，可保证应用在该容器内执行。Tomcat 是支持运行 Servlet/JSP 应用程序的容器，可运行 Java 程序动态生成资源内容，因此需系统中有 Java 环境。</p>
 <p><strong>下载:</strong></p>
 <p>从官网<a href="http://tomcat.apache.org/" target="_blank" rel="noopener">Tomcat Download</a>下载所需版本<br><img src="https://i.loli.net/2019/08/17/9fSs4hB3UVZ1NRv.jpg" alt="TomcatDownload.jpg"></p>
 <p><strong>解压:</strong></p>
@@ -352,7 +352,7 @@
 <p><strong>启停：</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;TOMCAT_HOME&#125;/bin/startup.sh</span><br><span class="line">&#123;TOMCAT_HOME&#125;/bin/shutdown.sh</span><br></pre></td></tr></table></figure>
 
-<h2 id="JDK-安装"><a href="#JDK-安装" class="headerlink" title="JDK 安装"></a>JDK 安装</h2><p><strong>Ubuntu:</strong></p>
+<h2><span id="jdk-安装">JDK 安装</span></h2><p><strong>Ubuntu:</strong></p>
 <p><code>sudo apt-get install openjdk-8-jdk</code></p>
 <p><strong>CentOS:</strong></p>
 <p><code>sudo yum install java-1.8.0-openjdk</code></p>
@@ -361,7 +361,7 @@
 <p>添加相应环境变量(java installed path 可通过<code>whereis java</code>查询)</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_HOME=/usr/local/&#123;java installed path&#125;</span><br><span class="line">export JRE_HOME=$&#123;JAVA_HOME&#125;/jre</span><br><span class="line">export CLASSPATH=.:$&#123;JAVA_HOME&#125;/lib:$&#123;JRE_HOME&#125;/lib</span><br><span class="line">export PATH=$&#123;JAVA_HOME&#125;/bin:$PATH</span><br></pre></td></tr></table></figure>
 
-<h2 id="数据库安装配置"><a href="#数据库安装配置" class="headerlink" title="数据库安装配置"></a>数据库安装配置</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p><strong>Ubuntu:</strong></p>
+<h2><span id="数据库安装配置">数据库安装配置</span></h2><h3><span id="安装">安装</span></h3><p><strong>Ubuntu:</strong></p>
 <p><code>sudo apt-get install mysql-server</code></p>
 <p><strong>CentOS:</strong></p>
 <p><code>sudo yum install mysql-server</code></p>
@@ -372,7 +372,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo service mysql start</span><br><span class="line">sudo service mysql stop</span><br><span class="line">sudo service mysql restart</span><br></pre></td></tr></table></figure>
 
 <p><strong><em>notice: 上述命令中，Ubuntu 系统中为 mysql，CentOS 为 mysqld</em></strong></p>
-<h3 id="检查存储字符集"><a href="#检查存储字符集" class="headerlink" title="检查存储字符集"></a>检查存储字符集</h3><p>输入<code>sudo mysql -u root -p</code>并输入密码后，进入 mysql 命令行界面</p>
+<h3><span id="检查存储字符集">检查存储字符集</span></h3><p>输入<code>sudo mysql -u root -p</code>并输入密码后，进入 mysql 命令行界面</p>
 <p><em>提示需要密码时，输入安装时设定的密码;若未设定，密码则为空;</em></p>
 <p><em>剩下的情况需以维护模式进入 mysql，输入<code>mysql -u debian-sys-maint -p</code>,并以<code>/etc/mysql/debian.cnf</code>文件中的密码登录，以设定或修改 root 的密码：</em></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">use mysql;</span><br><span class="line">update user set authentication_string=password(‘yourPassword’) where user=’root’ and Host =’localhost’;</span><br><span class="line">flush privileges;</span><br><span class="line">quit;</span><br></pre></td></tr></table></figure>
@@ -381,7 +381,7 @@
 <p><code>show variables like &#39;%character%&#39;;</code></p>
 <p><code>show variables like &#39;collation%&#39;;</code></p>
 <p>如编码存在瑞典 latin1，需修改为 utf-8:<br>向<code>/etc/mysql/my.cnf</code>(不一定是此文件，不同版本不同)中 mysqld 部分添加<code>default-character-set = utf8</code>并重启 mysql。</p>
-<h3 id="配置远程登录"><a href="#配置远程登录" class="headerlink" title="配置远程登录"></a>配置远程登录</h3><ol>
+<h3><span id="配置远程登录">配置远程登录</span></h3><ol>
 <li><p>登录 mysql</p>
 <p><code>sudo mysql -u root -p</code></p>
 </li>
@@ -397,23 +397,23 @@
 <li>修改 mysql 配置文件</li>
 </ol>
 <p>将<code>/etc/mysql/my.cnf</code>中<code>bind_address=127.0.0.1</code>值改为<code>0.0.0.0</code>。</p>
-<h2 id="ActiveMQ-Artemis-安装配置"><a href="#ActiveMQ-Artemis-安装配置" class="headerlink" title="ActiveMQ Artemis 安装配置"></a>ActiveMQ Artemis 安装配置</h2><h3 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h3><p>从<a href="https://activemq.apache.org/components/artemis/" target="_blank" rel="noopener">官网</a>下载后进行安装</p>
+<h2><span id="activemq-artemis-安装配置">ActiveMQ Artemis 安装配置</span></h2><h3><span id="安装">安装</span></h3><p>从<a href="https://activemq.apache.org/components/artemis/" target="_blank" rel="noopener">官网</a>下载后进行安装</p>
 <p><code>sudo tar -zxf apache-artemis-2.9.0-bin.tar.gz -C /usr/local/</code></p>
-<h3 id="创建-Broker-实例"><a href="#创建-Broker-实例" class="headerlink" title="创建 Broker 实例"></a>创建 Broker 实例</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /var/lib</span><br><span class="line">sudo $&#123;ARTEMIS_HOME&#125;/bin/artemis create mybrokerName</span><br></pre></td></tr></table></figure>
+<h3><span id="创建-broker-实例">创建 Broker 实例</span></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /var/lib</span><br><span class="line">sudo $&#123;ARTEMIS_HOME&#125;/bin/artemis create mybrokerName</span><br></pre></td></tr></table></figure>
 
 <p><strong>启停：</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/var/lib/mybrokerName/bin/artemis run</span><br><span class="line">/var/lib/mybrokerName/bin/artemis stop</span><br></pre></td></tr></table></figure>
 
-<h1 id="前端项目部署"><a href="#前端项目部署" class="headerlink" title="前端项目部署"></a>前端项目部署</h1><h2 id="打包"><a href="#打包" class="headerlink" title="打包"></a>打包</h2><p><code>npm run build</code></p>
+<h1><span id="前端项目部署">前端项目部署</span></h1><h2><span id="打包">打包</span></h2><p><code>npm run build</code></p>
 <p><em>notice : <code>config/index.js</code>中 build 的<code>assetsPublicPath</code>值应为<code>&quot;./&quot;</code>，意味相对路径。</em></p>
 <p>然后将生成的整个 dist 文件夹放入 nginx 配置文件中的 root 目录即可</p>
-<h2 id="Nginx-配置"><a href="#Nginx-配置" class="headerlink" title="Nginx 配置"></a>Nginx 配置</h2><p>在 Nginx 的默认配置文件 nginx.conf 中，最后一行写着 include /etc/nginx/conf.d/*.conf;说明只要是该目录下文件后缀为 conf 的文件都会被自动加载到 Nginx 配置中。所以推荐在该目录中新建单个项目的配置文件，便于管理。</p>
+<h2><span id="nginx-配置">Nginx 配置</span></h2><p>在 Nginx 的默认配置文件 nginx.conf 中，最后一行写着 include /etc/nginx/conf.d/*.conf;说明只要是该目录下文件后缀为 conf 的文件都会被自动加载到 Nginx 配置中。所以推荐在该目录中新建单个项目的配置文件，便于管理。</p>
 <p>参考配置文件:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    # 需要被监听的端口号，需此端口号没有被占用，否则在重启 Nginx 时会报错</span><br><span class="line">    listen       port;</span><br><span class="line">    # 服务名称</span><br><span class="line">    server_name  localhost;</span><br><span class="line"></span><br><span class="line">    # 上述端口指向的根目录</span><br><span class="line">    root /var/www/html/dist;</span><br><span class="line">    # 项目根目录中指向项目首页</span><br><span class="line">    index index.html;</span><br><span class="line"></span><br><span class="line">    client_max_body_size 20m;</span><br><span class="line">    client_body_buffer_size 128k;</span><br><span class="line"></span><br><span class="line">    # 根请求会指向的页面</span><br><span class="line">    location / &#123;</span><br><span class="line">      # 请求指向的首页</span><br><span class="line">      index index.html;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    # 将动态请求转发至Tomcat中的Java应用处理</span><br><span class="line">    # 这里表示将所有的 http://ipAddress:port/tag/ 开头的请求都转发到下面 proxy_pass 指定的链接中</span><br><span class="line">    location /tag/ &#123;</span><br><span class="line">          # 后端的真实接口</span><br><span class="line">          proxy_pass http://ipAddress:port/context/;</span><br><span class="line">          proxy_redirect off;</span><br><span class="line">          proxy_set_header Host $host;</span><br><span class="line">          proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">          proxy_set_header   Cookie $http_cookie;</span><br><span class="line">          # for Ajax</span><br><span class="line">          #fastcgi_param HTTP_X_REQUESTED_WITH $http_x_requested_with;</span><br><span class="line">          proxy_set_header HTTP-X-REQUESTED-WITH $http_x_requested_with;</span><br><span class="line">          proxy_set_header HTTP_X_REQUESTED_WITH $http_x_requested_with;</span><br><span class="line">          proxy_set_header x-requested-with $http_x_requested_with;</span><br><span class="line">          client_max_body_size 10m;</span><br><span class="line">          client_body_buffer_size 128k;</span><br><span class="line">          proxy_connect_timeout 90;</span><br><span class="line">          proxy_send_timeout 90;</span><br><span class="line">          proxy_read_timeout 90;</span><br><span class="line">          proxy_buffer_size 128k;</span><br><span class="line">          proxy_buffers 32 32k;</span><br><span class="line">          proxy_busy_buffers_size 128k;</span><br><span class="line">          proxy_temp_file_write_size 128k;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>最后重启即可</p>
-<h1 id="后端项目部署"><a href="#后端项目部署" class="headerlink" title="后端项目部署"></a>后端项目部署</h1><h2 id="打包-1"><a href="#打包-1" class="headerlink" title="打包"></a>打包</h2><p>使用 Maven 工具打包后，放入<code>${TOMCAT_HOME}/webapps/</code>目录即可</p>
-<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p><strong>实时日志查看:</strong></p>
+<h1><span id="后端项目部署">后端项目部署</span></h1><h2><span id="打包">打包</span></h2><p>使用 Maven 工具打包后，放入<code>${TOMCAT_HOME}/webapps/</code>目录即可</p>
+<h2><span id="测试">测试</span></h2><p><strong>实时日志查看:</strong></p>
 <p><code>sudo tail -f /usr/local/tomcat8.5.43/logs/catalina.out</code></p>
 <p><strong>查看日志尾部 n 行:</strong></p>
 <p><code>sudo tail -n 50 /usr/local/tomcat8.5.43/logs/catalina.out</code></p>
@@ -579,7 +579,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#服务器环境搭建"><span class="nav-number">1.</span> <span class="nav-text">服务器环境搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#服务器软件"><span class="nav-number">1.1.</span> <span class="nav-text">服务器软件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Ngnix-安装"><span class="nav-number">1.1.1.</span> <span class="nav-text">Ngnix 安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Tomcat-安装"><span class="nav-number">1.1.2.</span> <span class="nav-text">Tomcat 安装</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JDK-安装"><span class="nav-number">1.2.</span> <span class="nav-text">JDK 安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库安装配置"><span class="nav-number">1.3.</span> <span class="nav-text">数据库安装配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装"><span class="nav-number">1.3.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#检查存储字符集"><span class="nav-number">1.3.2.</span> <span class="nav-text">检查存储字符集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置远程登录"><span class="nav-number">1.3.3.</span> <span class="nav-text">配置远程登录</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ActiveMQ-Artemis-安装配置"><span class="nav-number">1.4.</span> <span class="nav-text">ActiveMQ Artemis 安装配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装-1"><span class="nav-number">1.4.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建-Broker-实例"><span class="nav-number">1.4.2.</span> <span class="nav-text">创建 Broker 实例</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#前端项目部署"><span class="nav-number">2.</span> <span class="nav-text">前端项目部署</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#打包"><span class="nav-number">2.1.</span> <span class="nav-text">打包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Nginx-配置"><span class="nav-number">2.2.</span> <span class="nav-text">Nginx 配置</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#后端项目部署"><span class="nav-number">3.</span> <span class="nav-text">后端项目部署</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#打包-1"><span class="nav-number">3.1.</span> <span class="nav-text">打包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试"><span class="nav-number">3.2.</span> <span class="nav-text">测试</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#null"><span class="nav-number">1.</span> <span class="nav-text">服务器环境搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#null"><span class="nav-number">1.1.</span> <span class="nav-text">服务器软件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">1.1.1.</span> <span class="nav-text">Ngnix 安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">1.1.2.</span> <span class="nav-text">Tomcat 安装</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#null"><span class="nav-number">1.2.</span> <span class="nav-text">JDK 安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#null"><span class="nav-number">1.3.</span> <span class="nav-text">数据库安装配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">1.3.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">1.3.2.</span> <span class="nav-text">检查存储字符集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">1.3.3.</span> <span class="nav-text">配置远程登录</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#null"><span class="nav-number">1.4.</span> <span class="nav-text">ActiveMQ Artemis 安装配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">1.4.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null"><span class="nav-number">1.4.2.</span> <span class="nav-text">创建 Broker 实例</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#null"><span class="nav-number">2.</span> <span class="nav-text">前端项目部署</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#null"><span class="nav-number">2.1.</span> <span class="nav-text">打包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#null"><span class="nav-number">2.2.</span> <span class="nav-text">Nginx 配置</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#null"><span class="nav-number">3.</span> <span class="nav-text">后端项目部署</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#null"><span class="nav-number">3.1.</span> <span class="nav-text">打包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#null"><span class="nav-number">3.2.</span> <span class="nav-text">测试</span></a></li></ol></li></ol></div>
             
 
           </div>
