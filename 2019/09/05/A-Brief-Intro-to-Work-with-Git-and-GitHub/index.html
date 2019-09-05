@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="内存泄漏,Linux,">
+  <meta name="keywords" content="Git,GitHub,">
 
 
 
@@ -79,22 +79,22 @@
 
 
 
-<meta name="description" content="背景: 部署项目过程中,系统提示内存不足 排查过程 使用 atop 查看内存使用情况  atop 按m   发现是多个 java 应用占用了内存  在 atop 中按 c 查看这些 java 应用的命令行参数,进一步定位原因   发现是 tomcat 停止后,java 应用进程未停止  由此去检查${TOMCAT_HOME}/logs/中的日志  最终定位到问题为: java 应用与 MQTT B">
-<meta name="keywords" content="内存泄漏,Linux">
+<meta name="description" content="This actricle briefly introduce how to work with Git and GitHub, follow the steps below to get comfortable making changes to the code base, opening up a pull request (PR), and merging code into the ma">
+<meta name="keywords" content="Git,GitHub">
 <meta property="og:type" content="article">
-<meta property="og:title" content="记一次Linux系统内存占用较高的排查">
-<meta property="og:url" content="http://yoursite.com/2019/08/29/记一次Linux系统内存占用较高的排查/index.html">
+<meta property="og:title" content="A Brief Intro to Work with Git and GitHub">
+<meta property="og:url" content="http://yoursite.com/2019/09/05/A-Brief-Intro-to-Work-with-Git-and-GitHub/index.html">
 <meta property="og:site_name" content="DayDream Land">
-<meta property="og:description" content="背景: 部署项目过程中,系统提示内存不足 排查过程 使用 atop 查看内存使用情况  atop 按m   发现是多个 java 应用占用了内存  在 atop 中按 c 查看这些 java 应用的命令行参数,进一步定位原因   发现是 tomcat 停止后,java 应用进程未停止  由此去检查${TOMCAT_HOME}/logs/中的日志  最终定位到问题为: java 应用与 MQTT B">
+<meta property="og:description" content="This actricle briefly introduce how to work with Git and GitHub, follow the steps below to get comfortable making changes to the code base, opening up a pull request (PR), and merging code into the ma">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https://i.loli.net/2019/08/29/xq3UbRcKktZOX9M.jpg">
-<meta property="og:image" content="https://i.loli.net/2019/08/29/LvHe5X6rUIPfCkn.jpg">
-<meta property="og:image" content="https://i.loli.net/2019/08/29/bwNDiIEvTUmCMS3.jpg">
-<meta property="og:updated_time" content="2019-09-05T07:38:29.568Z">
+<meta property="og:image" content="https://i.loli.net/2019/09/05/gi4ExjzS8OqpLJF.png">
+<meta property="og:image" content="https://i.loli.net/2019/09/05/rHWXkZgSjRJhoMz.png">
+<meta property="og:image" content="https://i.loli.net/2019/09/05/xKPwtJD64dguNrQ.png">
+<meta property="og:updated_time" content="2019-09-05T08:13:30.256Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="记一次Linux系统内存占用较高的排查">
-<meta name="twitter:description" content="背景: 部署项目过程中,系统提示内存不足 排查过程 使用 atop 查看内存使用情况  atop 按m   发现是多个 java 应用占用了内存  在 atop 中按 c 查看这些 java 应用的命令行参数,进一步定位原因   发现是 tomcat 停止后,java 应用进程未停止  由此去检查${TOMCAT_HOME}/logs/中的日志  最终定位到问题为: java 应用与 MQTT B">
-<meta name="twitter:image" content="https://i.loli.net/2019/08/29/xq3UbRcKktZOX9M.jpg">
+<meta name="twitter:title" content="A Brief Intro to Work with Git and GitHub">
+<meta name="twitter:description" content="This actricle briefly introduce how to work with Git and GitHub, follow the steps below to get comfortable making changes to the code base, opening up a pull request (PR), and merging code into the ma">
+<meta name="twitter:image" content="https://i.loli.net/2019/09/05/gi4ExjzS8OqpLJF.png">
 
 
 
@@ -124,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/08/29/记一次Linux系统内存占用较高的排查/">
+  <link rel="canonical" href="http://yoursite.com/2019/09/05/A-Brief-Intro-to-Work-with-Git-and-GitHub/">
 
 
 
 
 
-  <title>记一次Linux系统内存占用较高的排查 | DayDream Land</title>
+  <title>A Brief Intro to Work with Git and GitHub | DayDream Land</title>
   
 
 
@@ -257,7 +257,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/29/记一次Linux系统内存占用较高的排查/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/05/A-Brief-Intro-to-Work-with-Git-and-GitHub/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Lance Peng">
@@ -274,7 +274,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">记一次Linux系统内存占用较高的排查</h1>
+          <h1 class="post-title" itemprop="name headline">A Brief Intro to Work with Git and GitHub</h1>
         
 
         <div class="post-meta">
@@ -286,8 +286,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-29T13:46:19+08:00">
-                2019-08-29
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-05T14:27:02+08:00">
+                2019-09-05
               </time>
             
 
@@ -309,8 +309,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
+                  <a href="/categories/开发工具/" itemprop="url" rel="index">
+                    <span itemprop="name">开发工具</span>
                   </a>
                 </span>
 
@@ -346,34 +346,34 @@
       
 
       
-        <p><strong>背景: 部署项目过程中,系统提示内存不足</strong></p>
-<h1><span id="排查过程">排查过程</span></h1><ol>
-<li>使用 atop 查看内存使用情况</li>
-</ol>
-<p><code>atop 按m</code></p>
-<p><img src="https://i.loli.net/2019/08/29/xq3UbRcKktZOX9M.jpg" alt="atop-m.jpg"></p>
-<ol start="2">
-<li>发现是多个 java 应用占用了内存</li>
-</ol>
-<p>在 atop 中按 c 查看这些 java 应用的命令行参数,进一步定位原因</p>
-<p><img src="https://i.loli.net/2019/08/29/LvHe5X6rUIPfCkn.jpg" alt="atop-c.jpg"></p>
-<ol start="3">
-<li>发现是 tomcat 停止后,java 应用进程未停止</li>
-</ol>
-<p>由此去检查<code>${TOMCAT_HOME}/logs/</code>中的日志</p>
-<p><img src="https://i.loli.net/2019/08/29/bwNDiIEvTUmCMS3.jpg" alt="catalina-out.jpg"></p>
-<p><strong>最终定位到问题为: java 应用与 MQTT Broker 的连接未正确关闭</strong></p>
-<h1><span id="问题解决">问题解决</span></h1><p>在 Spring 容器销毁前，调用关闭连接的相应方法:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public void closeClient()&#123;</span><br><span class="line">    try &#123;</span><br><span class="line">        if (this.subscribeClient != null) &#123;</span><br><span class="line">            this.subscribeClient.disconnect();</span><br><span class="line">            this.subscribeClient.close();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; catch (MqttException e) &#123;</span><br><span class="line">        LOGGER.error(&quot;Problems disconnecting and closing the client.&quot;);</span><br><span class="line">        LOGGER.error(e.getLocalizedMessage());</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <p>This actricle briefly introduce how to work with Git and GitHub, follow the steps below to get comfortable making changes to the code base, opening up a pull request (PR), and merging code into the master branch.</p>
+<h1><span id="step-0-install-git-and-create-a-github-account">Step 0: Install git and create a GitHub account</span></h1><p>official website of Git to <a href="https://git-scm.com/" target="_blank" rel="noopener">download</a></p>
+<p>get a account form <a href="https://github.com/" target="_blank" rel="noopener">GitHub</a></p>
+<h1><span id="step-1-create-a-local-git-repository">Step 1: Create a local git repository</span></h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd yourProjectDir</span><br><span class="line">git init</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@PreDestroy</span><br><span class="line">public void onDestroy() throws Exception &#123;</span><br><span class="line">    mqttMessageRec.closeClient();</span><br><span class="line">    System.out.println(&quot;Spring Container is destroyed!&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1><span id="step-2-add-a-new-file-to-the-repo">Step 2: Add a new file to the repo</span></h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">touch Hello-World.txt</span><br></pre></td></tr></table></figure>
 
-<p><strong>参考文章:</strong></p>
-<ul>
-<li><a href="http://www.dataguru.cn/thread-653018-1-1.html" target="_blank" rel="noopener">linux 下的 atop 比 top 命令好用多了（监控性能指标）</a></li>
-<li><a href="https://yq.aliyun.com/articles/161186" target="_blank" rel="noopener">记一次 Linux 系统内存占用较高得排查
-</a></li>
-</ul>
+<h1><span id="step-3-add-a-file-to-the-staging-environment">Step 3: Add a file to the staging environment</span></h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add Hello-World.txt</span><br></pre></td></tr></table></figure>
+
+<h1><span id="step-4-create-a-commit">Step 4: Create a commit</span></h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m &quot;Hello Git&quot;</span><br></pre></td></tr></table></figure>
+
+<h1><span id="step-5-create-a-new-branch">Step 5: Create a new branch</span></h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b branch-name</span><br></pre></td></tr></table></figure>
+
+<h1><span id="step-6-create-a-new-repository-on-github">Step 6: Create a new repository on GitHub</span></h1><p>take care: Do not check the <code>Initialize this repository with a README</code> if you’re importing an existing repository.</p>
+<h1><span id="step-7-push-a-branch-to-github">Step 7: Push a branch to GitHub</span></h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin https://github.com/&lt;gitHub userName&gt;/&lt;repository Name&gt;.git</span><br><span class="line">git push -u origin branch-name</span><br></pre></td></tr></table></figure>
+
+<h1><span id="step-8-create-a-pull-request-pr">Step 8: Create a Pull Request (PR)</span></h1><p>Select the branch you pushed,then click the <code>Pull request</code> link.</p>
+<p><img src="https://i.loli.net/2019/09/05/gi4ExjzS8OqpLJF.png" alt="image.png"></p>
+<h1><span id="step-9-merge-a-pr">Step 9: Merge a PR</span></h1><p>Then you will see the details of changes.Leave a comment and Create pull request if there is no problems.</p>
+<p><img src="https://i.loli.net/2019/09/05/rHWXkZgSjRJhoMz.png" alt="image.png"></p>
+<p><img src="https://i.loli.net/2019/09/05/xKPwtJD64dguNrQ.png" alt="image.png"></p>
+<h1><span id="step-10-get-changes-on-github-back-to-your-computer">Step 10: Get changes on GitHub back to your computer</span></h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git checkout master</span><br><span class="line">git pull origin master</span><br></pre></td></tr></table></figure>
+
+<h1><span id="step-11-bask-in-your-git-glory">Step 11: Bask in your git glory</span></h1><p>You’ve successfully made a PR and merged your code to the master branch.</p>
+<p>The more you use git, the more comfortable you’ll… git with it. (I couldn’t resist.)</p>
+<p><em><a href="https://github.github.com/training-kit/downloads/github-git-cheat-sheet.pdf" target="_blank" rel="noopener">Useful Git-Commands</a></em></p>
+<p><em><a href="https://github.com/joshnh/Git-Commands" target="_blank" rel="noopener">A list of commonly used Git commands</a></em></p>
+<p><em>Reference Articles: <a href="https://product.hubspot.com/blog/git-and-github-tutorial-for-beginners" target="_blank" rel="noopener">An Intro to Git and GitHub for Beginners (Tutorial)</a></em></p>
 
       
     </div>
@@ -391,9 +391,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/内存泄漏/" rel="tag"># 内存泄漏</a>
+            <a href="/tags/Git/" rel="tag"># Git</a>
           
-            <a href="/tags/Linux/" rel="tag"># Linux</a>
+            <a href="/tags/GitHub/" rel="tag"># GitHub</a>
           
         </div>
       
@@ -406,8 +406,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/08/17/Vue和SpringBoot项目的从零部署/" rel="next" title="Vue 和 SpringBoot 项目的服务器部署">
-                <i class="fa fa-chevron-left"></i> Vue 和 SpringBoot 项目的服务器部署
+              <a href="/2019/09/03/利用ss代理配合Proxifier解决OneNote同步问题/" rel="next" title="利用ss代理配合Proxifier解决OneNote同步问题">
+                <i class="fa fa-chevron-left"></i> 利用ss代理配合Proxifier解决OneNote同步问题
               </a>
             
           </div>
@@ -415,10 +415,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/09/03/利用ss代理配合Proxifier解决OneNote同步问题/" rel="prev" title="利用ss代理配合Proxifier解决OneNote同步问题">
-                利用ss代理配合Proxifier解决OneNote同步问题 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -550,7 +546,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#null"><span class="nav-number">1.</span> <span class="nav-text">排查过程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#null"><span class="nav-number">2.</span> <span class="nav-text">问题解决</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#null"><span class="nav-number">1.</span> <span class="nav-text">Step 0: Install git and create a GitHub account</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#null"><span class="nav-number">2.</span> <span class="nav-text">Step 1: Create a local git repository</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#null"><span class="nav-number">3.</span> <span class="nav-text">Step 2: Add a new file to the repo</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#null"><span class="nav-number">4.</span> <span class="nav-text">Step 3: Add a file to the staging environment</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#null"><span class="nav-number">5.</span> <span class="nav-text">Step 4: Create a commit</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#null"><span class="nav-number">6.</span> <span class="nav-text">Step 5: Create a new branch</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#null"><span class="nav-number">7.</span> <span class="nav-text">Step 6: Create a new repository on GitHub</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#null"><span class="nav-number">8.</span> <span class="nav-text">Step 7: Push a branch to GitHub</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#null"><span class="nav-number">9.</span> <span class="nav-text">Step 8: Create a Pull Request (PR)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#null"><span class="nav-number">10.</span> <span class="nav-text">Step 9: Merge a PR</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#null"><span class="nav-number">11.</span> <span class="nav-text">Step 10: Get changes on GitHub back to your computer</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#null"><span class="nav-number">12.</span> <span class="nav-text">Step 11: Bask in your git glory</span></a></li></ol></div>
             
 
           </div>
