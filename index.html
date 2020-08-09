@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next pisces use-motion" lang="en">
+<html class="theme-next pisces use-motion" lang="zh-CN">
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -80,12 +80,12 @@
 
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="DayDream Land">
-<meta property="og:url" content="http://yoursite.com/index.html">
-<meta property="og:site_name" content="DayDream Land">
-<meta property="og:locale" content="en">
+<meta property="og:title" content="Silver Daydream">
+<meta property="og:url" content="http://daydream.live/index.html">
+<meta property="og:site_name" content="Silver Daydream">
+<meta property="og:locale" content="zh-CN">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="DayDream Land">
+<meta name="twitter:title" content="Silver Daydream">
 
 
 
@@ -115,13 +115,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/">
+  <link rel="canonical" href="http://daydream.live/">
 
 
 
 
 
-  <title>DayDream Land</title>
+  <title>Silver Daydream</title>
   
 
 
@@ -133,7 +133,7 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   
   
@@ -152,12 +152,12 @@
     <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">DayDream Land</span>
+        <span class="site-title">Silver Daydream</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
       
-        <p class="site-subtitle"></p>
+        <p class="site-subtitle">银色白日梦</p>
       
   </div>
 
@@ -249,7 +249,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/05/A-Brief-Intro-to-Work-with-Git-and-GitHub/">
+    <link itemprop="mainEntityOfPage" href="http://daydream.live/2020/08/05/Git-Learning/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Lance Peng">
@@ -258,7 +258,390 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="DayDream Land">
+      <meta itemprop="name" content="Silver Daydream">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/08/05/Git-Learning/" itemprop="url">Git-Learning</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-08-05T17:56:49+08:00">
+                2020-08-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/开发工具/" itemprop="url" rel="index">
+                    <span itemprop="name">开发工具</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1><span id="git-基础">Git 基础</span></h1><h2><span id="配置-git">配置 git</span></h2><h3><span id="添加配置">添加配置</span></h3><p><code>git config [--local | --global | --system] user.name &#39;Your name&#39;</code></p>
+<p><code>git config [--local | --global | --system] user.email &#39;Your email&#39;</code></p>
+<h3><span id="查看配置">查看配置</span></h3><p><code>git config --list [--local | --global | --system]</code></p>
+<h3><span id="清除配置">清除配置</span></h3><p><code>git config unset [--local | --global | --system] user.name</code></p>
+<h3><span id="区别">区别</span></h3><ul>
+<li>local：区域为本仓库,配置信息记录在.git/config 中</li>
+<li>global: 当前用户的所有仓库,配置信息记录个人 home 目录下的.gitconfig 中</li>
+<li>system: 本系统的所有用户,配置信息记录在.git/configgit 安装目录的中</li>
+</ul>
+<p>优先级 local &gt; global &gt; system</p>
+<h2><span id="创建-git-仓库">创建 Git 仓库</span></h2><p>两种⽅式：</p>
+<ol>
+<li>⽤ Git 之前已经有项⽬代码</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cd 项⽬代码所在的⽂件夹</span><br><span class="line">$ git init</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>⽤ Git 之前还没有项⽬代码</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ cd 某个⽂件夹</span><br><span class="line">$ git init your_project #会在当前路径下创建和项⽬名称同名的⽂件夹</span><br><span class="line">$ cd your_project</span><br></pre></td></tr></table></figure>
+
+<h2><span id="往仓库里添加文件">往仓库⾥添加⽂件</span></h2><p><img src="https://cdn.jsdelivr.net/gh/LancePeng42/Pic-Bed/imgs/blog/Git-Learning/%E5%90%91%E4%BB%93%E5%BA%93%E4%B8%AD%E6%B7%BB%E5%8A%A0%E6%96%87%E4%BB%B6.jpg" alt></p>
+<p><code>git add . | -A</code>:将当前目录或其子目录下相应文件的修改、删除，添加到暂存区。</p>
+<p><code>git add -u</code>:将工作目录被修改和被删除的文件添加到暂存区(不包含没有纳入 Git 管理的新增文件)</p>
+<p><code>git commit -m &quot;Some note about this commit&quot;</code></p>
+<h2><span id="通过-git-log-查看版本演变历史">通过 git log 查看版本演变历史</span></h2><p><code>git log --all</code>: 查看所有分支的历史</p>
+<p><code>git log --all --graph</code>: 查看图形化的 log 地址</p>
+<p><code>git log --oneline</code>： 查看单行的简洁历史。</p>
+<p><code>git log --oneline -n4</code>: 查看最近的四条简洁历史。</p>
+<p><code>git log --oneline --all -n4 --graph</code>：查看所有分支最近 4 条单行的图形化历史。</p>
+<p><code>gitk</code>:通过图形界面工具来查看版本历史</p>
+<h2><span id="探秘git-目录">探秘.git 目录</span></h2><p>.git 文件目录：</p>
+<ul>
+<li><p>COMMIT_EDITMSG</p>
+</li>
+<li><p>config 当前 git 的配置文件</p>
+</li>
+<li><p>description （仓库的描述信息文件）</p>
+</li>
+<li><p>HEAD （指向当前所在的分支），例如当前在 develop 分支，实际指向地址是 refs/heads/develop</p>
+</li>
+<li><p>ORIG_HEAD/FETCH_HEAD</p>
+</li>
+<li><p>index</p>
+</li>
+<li><p>heads （存放当前项目的所有分支）</p>
+</li>
+<li><p>tags (存放的当前项目的所有标签，又叫做里程碑)</p>
+</li>
+<li><p>hooks [文件夹]</p>
+</li>
+<li><p>info [文件夹]</p>
+</li>
+<li><p>logs [文件夹]</p>
+</li>
+<li><p>objects [文件夹] （存放所有的 git 对象，对象哈希值前 2 位作为文件夹名称，后 38 位作为对象文件名, 可通过 git cat-file -p 命令，拼接文件夹名称+文件名查看）</p>
+</li>
+<li><p>refs [文件夹]</p>
+</li>
+</ul>
+<p><code>git cat -file -t</code>: 查看 git 对象的类型</p>
+<p><code>git cat -file -p</code>: 查看 git 对象的内容</p>
+<p><code>git cat -file -s</code>: 查看 git 对象的大小</p>
+<h2><span id="commit-tree-和-blob-三个对象之间的关系">commit、tree 和 blob 三个对象之间的关系</span></h2><p><img src="https://cdn.jsdelivr.net/gh/LancePeng42/Pic-Bed/imgs/blog/Git-Learning/commit-tree-blob%E4%B8%89%E8%80%85%E9%97%B4%E5%85%B3%E7%B3%BB.jpg" alt></p>
+<p>git 有 3 种对象：commit、tree、blob。</p>
+<p>每次的提交，都是一个 commit，一个 commit 中包含了一棵 tree、author、message 等信息，每个 tree 中可递归包含多棵 tree 和 blob，而文件的最终形式是 blob。</p>
+<p>git 对于文件内容相同的 blob，采用享元模式，使用同一个 blob。不同的 commit 的区别是 commit、tree 和有差异的 blob，多数未变更的文件对应的 blob 都是相同的，这么设计对于版本管理系统来说可以省很多存储空间。其次，Git 还有增量存储的机制。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://daydream.live/2020/06/13/翻墙百科/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Lance Peng">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/favFlowerSquared.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Silver Daydream">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/06/13/翻墙百科/" itemprop="url">翻墙百科</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-13T11:05:42+08:00">
+                2020-06-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/生存技能/" itemprop="url" rel="index">
+                    <span itemprop="name">生存技能</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1><span id="概述">概述</span></h1><h2><span id="墙是什么">墙是什么</span></h2><p>墙是防火长城，GFW(Great Fire Wall)。主要作用在于分析和过滤境外咨询和互相访问，是审查制度下的产物，总体利大于弊。</p>
+<h1><span id="gfw-工作原理">GFW 工作原理</span></h1><p><img src="https://cdn.jsdelivr.net/gh/LancePeng42/Pic-Bed/imgs/blog/GFW/%E6%B2%A1%E6%9C%89GFW%E7%9A%84%E7%BD%91%E7%BB%9C%E9%80%9A%E8%AE%AF.jpg" alt></p>
+<h2><span id="gfw-封锁方式">GFW 封锁方式</span></h2><p><img src="https://cdn.jsdelivr.net/gh/LancePeng42/Pic-Bed/imgs/blog/GFW/GFW%E7%9A%84%E5%B0%81%E9%94%81%E6%96%B9%E5%BC%8F.jpg" alt></p>
+<ul>
+<li>DNS 污染，解析错误地址或者不解析</li>
+<li>过滤关键字</li>
+<li>端口阻断(Port:443，22)</li>
+<li>IP 地址批量封锁</li>
+</ul>
+<h2><span id="翻墙工作原理">翻墙工作原理</span></h2><h3><span id="初代-vpn">初代 VPN</span></h3><p>只要 GFW 不探明所发送数据包的真实意图，那么就可以通过连接一台符合 GFW 认为合理的服务器作为中转，来替代用户去做想做的事情，然后返回结果，全程加密。这是很多初期 http 代理 VPN、SSH 这些，突破封锁的实现方式。<br><img src="https://cdn.jsdelivr.net/gh/LancePeng42/Pic-Bed/imgs/blog/GFW/VPN%E7%BF%BB%E5%A2%99%E7%9A%84%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F%E4%BB%A5%E5%8F%8A%E5%BC%8A%E7%AB%AF.jpg" alt></p>
+<ul>
+<li>数据流量不再是明文，而是加密数据，GFW 看不到关键字</li>
+<li>DNS 解析时，发现用户访问的对象是允许的服务器而不是 google</li>
+</ul>
+<p>但 GFW 发现，越来越多的流量都是这种类似的模式：先发送一个数据包请求和一个服务器建立加密连接，然后紧跟着一个代理请求，这就是传说中的特征。<br>VPN 和 http 代理曾经一度非常流行，后来由于太多用户使用这种方式来翻墙，所以 GFW 根据这些特别有特征明显的这种流量做了两件事：</p>
+<ul>
+<li>VPN 通讯用的端口被封锁，政企用户需要申报审核</li>
+<li>提供 VPN 服务的服务器 IP 地址批量被封</li>
+</ul>
+<h3><span id="shadowsocks">Shadowsocks</span></h3><p>Shadowsocks 引出了一个把代理服务器拆分成本地和远程两个的这种概念，实现经过 GFW 的流量全部加密，从而消除明显的流量特征这个概念，后来衍生出来的 SSR、v2ray 这些都是基于类似的原理：<br><img src="https://cdn.jsdelivr.net/gh/LancePeng42/Pic-Bed/imgs/blog/GFW/Shadowsocks-SSR-v2ray%E7%AD%89%E6%96%B9%E5%BC%8F%E8%BF%90%E4%BD%9C%E5%8E%9F%E7%90%86.jpg" alt><br>GFW 之所以不封锁所有的国际加密流量，是因为相比翻墙的流量，超过 99%的通信流量都是正常的需求。所以目前为止，Shadowsocks 这种实现原理相对安全。</p>
+<h1><span id="多种软硬件翻墙方式">多种软硬件翻墙方式</span></h1><h2><span id="软件翻墙">软件翻墙</span></h2><h3><span id="vpnvirtual-private-network">VPN(Virtual Private Network)</span></h3><p>vpn 只是翻墙的一种方式，虚拟私有网络，最早应用于一些大公司中，因私密通信的需求而产生，是一种端对端的虚拟私有专线，可避免通讯流量被中间人劫持。故最早并不是应用于翻墙，被流行用于翻墙后，因其流量特征明显，早就可以被 GFW 完美探测并封锁，故私人用户用 VPN 翻墙并不安全，只有申请报备的企业用户才可正常使用。</p>
+<h3><span id="shadowsocks-及衍生品ssr-v2ray-trojan">Shadowsocks 及衍生品(SSR V2RAY Trojan)</span></h3><p>该类软件利用本地服务器加密流量，然后将加密流量发送至远程服务器解密，再进行转发，进而突破 GFW 的封锁。GFW 封锁网络，不会去解密流量，而是通过各种方式来判断该流量的意图，所以无论采用那种加密协议都不是完全安全的。</p>
+<p>这些协议运行于应用层的应用软件，常见的应用软件有 Shadowsocks、ShadowsocksR、Shadowrocket、V2Ray、Clash、Surge。越新的协议和加密算法意味着相对安全，越复杂的加解密算法需要较高的算力，不适合算力差的路由器，相对的，旧的协议也有其适用的场景。</p>
+<p>该类软件翻墙方式局限：</p>
+<p>大多数软件没有一定的底层权限，只能代理应用层的网络流量。例如：即使打开全局代理模式，某些软件的通讯流量依然无法代理。常见于 UWP 应用，其运行于系统层，具有较高的权限，甚至不遵循操作系统的代理规则，不将通讯流量交给翻墙软件接管。有些游戏应用也是如此，其通讯协议是 TCP UDP，翻墙软件无法接管其通讯流量，自然也无法加速。</p>
+<p>少数软件功能强大，可模拟虚拟网卡，强制接管所有流量，能够实现真的全局代理。</p>
+<h2><span id="硬件翻墙路由器翻墙">硬件翻墙（路由器翻墙）</span></h2><h3><span id="硬路由">硬路由</span></h3><p>该方式可无视各种应用层网络层硬件层的通讯协议，实现真的全局代理。路由器是本地网络接入互联网的最后一个环节，并且独立于电脑，所以可以无视流量代理规则，强制接收所有流量，来实现真全局代理。</p>
+<p>原理可简单理解为将翻墙软件部署在了路由器上，连接路由器的设备都可以通过路由器翻墙。</p>
+<p><em>优点：可应用于无法安装翻墙软件的设备上</em></p>
+<p><em>缺点：路由器算力弱，基本只能满足最基础的路由功能，大量的加解密运算会使网络通讯产生卡顿</em></p>
+<h3><span id="软路由">软路由</span></h3><p>软路由是改装过的路由器，算力更强，克服了硬路由算力不足的短板。</p>
+<p><em>缺点：价格贵；配置繁琐；稳定性一般；维护繁琐</em></p>
+<h2><span id="网关模式翻墙">网关模式翻墙</span></h2><p>通过一台计算机上跑的软件来实现路由器功能，代表性产品：Windows 下的 Clash，Mac 下的 Surge。在本地局域网里部署一台运行了 Surge 或 Clash 的电脑当作网关，可接管局域网里所有网络的设备的所有流量。</p>
+<p><em>优点：方便，效率高；性能良好；便于集中管理</em></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://daydream.live/2019/09/05/A-Brief-Intro-to-Work-with-Git-and-GitHub/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Lance Peng">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/favFlowerSquared.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Silver Daydream">
     </span>
 
     
@@ -418,7 +801,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/03/利用ss代理配合Proxifier解决OneNote同步问题/">
+    <link itemprop="mainEntityOfPage" href="http://daydream.live/2019/09/03/利用ss代理配合Proxifier解决OneNote同步问题/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Lance Peng">
@@ -427,7 +810,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="DayDream Land">
+      <meta itemprop="name" content="Silver Daydream">
     </span>
 
     
@@ -608,7 +991,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/29/记一次Linux系统内存占用较高的排查/">
+    <link itemprop="mainEntityOfPage" href="http://daydream.live/2019/08/29/记一次Linux系统内存占用较高的排查/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Lance Peng">
@@ -617,7 +1000,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="DayDream Land">
+      <meta itemprop="name" content="Silver Daydream">
     </span>
 
     
@@ -777,7 +1160,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/17/Vue和SpringBoot项目的从零部署/">
+    <link itemprop="mainEntityOfPage" href="http://daydream.live/2019/08/17/Vue和SpringBoot项目的从零部署/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Lance Peng">
@@ -786,7 +1169,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="DayDream Land">
+      <meta itemprop="name" content="Silver Daydream">
     </span>
 
     
@@ -1014,7 +1397,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/17/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://daydream.live/2019/08/17/hello-world/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Lance Peng">
@@ -1023,7 +1406,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="DayDream Land">
+      <meta itemprop="name" content="Silver Daydream">
     </span>
 
     
@@ -1181,7 +1564,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1192,7 +1575,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -1203,7 +1586,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -1240,7 +1623,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
