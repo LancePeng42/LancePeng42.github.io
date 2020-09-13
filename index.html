@@ -381,7 +381,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://daydream.live/2020/08/23/IntelliJ-IDEA插件开发-基础入门篇之HelloWorld-1/">
+    <link itemprop="mainEntityOfPage" href="http://daydream.live/2020/09/03/CheckStyle-IDEA 自定义指南（代码检测模块）/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Lance Peng">
@@ -400,7 +400,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/08/23/IntelliJ-IDEA插件开发-基础入门篇之HelloWorld-1/" itemprop="url">IntelliJ-IDEA插件开发-基础入门篇之HelloWorld-1</a></h1>
+                <a class="post-title-link" href="/2020/09/03/CheckStyle-IDEA 自定义指南（代码检测模块）/" itemprop="url">IntelliJ-IDEA插件开发-代码检测插件篇之CheckStyle-IDEA</a></h1>
         
 
         <div class="post-meta">
@@ -412,8 +412,183 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-08-23T22:13:38+08:00">
-                2020-08-23
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-09-03T22:13:38+08:00">
+                2020-09-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/开发工具/" itemprop="url" rel="index">
+                    <span itemprop="name">开发工具</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1><span id="checkstyle-idea-自定义指南代码检测模块">CheckStyle-IDEA 自定义指南（代码检测模块）</span></h1><h2><span id="checkstyle-与-checkstyle-idea-联系">CheckStyle 与 CheckStyle-IDEA 联系</span></h2><h3><span id="checkstyle">CheckStyle</span></h3><p><a href="https://checkstyle.org/" target="_blank" rel="noopener">Checkstyle</a> 是一种开发工具，可帮助程序员编写符合编码标准的Java代码。Checkstyle 可以检查源代码的许多方面。它可以发现类设计问题，方法设计问题。它还能够检查代码布局和格式问题。</p>
+<p>可将CheckStyle通过 <a href="https://checkstyle.org/anttask.html" target="_blank" rel="noopener">Ant</a> 或 <a href="https://checkstyle.org/cmdline.html" target="_blank" rel="noopener">CLI</a> 的方式集成到项目的构建过程或开发环境中，进行使用。</p>
+<h3><span id="checkstyle-idea">CheckStyle-IDEA</span></h3><p>为方便使用，众多第三方开发者便基于CheckStyle，针对主流IDE，开发出了相应的插件。<a href="https://github.com/jshiell/checkstyle-idea" target="_blank" rel="noopener">CheckStyle-IDEA</a> 便是<a href="https://www.jetbrains.com/idea/" target="_blank" rel="noopener">IntelliJ IDEA</a>平台的插件工具，提供代码检测的实时反馈。</p>
+<p>可在IntelliJ IDEA 插件市场中安装使用。</p>
+<h2><span id="自定义代码检测规则">自定义代码检测规则</span></h2><p>CheckStyle 具有很高的可配置性和可扩展性，可通过以下两种方式配置、扩展Checkstyle以实现自定义的编码规范检测。</p>
+<h3><span id="方式一修改checkstyle配置文件">方式一：修改CheckStyle配置文件</span></h3><p>CheckStyle 提供了检测源代码的多项功能，可在 <a href="https://checkstyle.org/checks.html" target="_blank" rel="noopener">官网文档</a> 查看所支持的代码检测规则，然后参考 <a href="https://checkstyle.org/config.html" target="_blank" rel="noopener">配置文件</a> 的编写规范，配置自定义的代码检测规则，最后导入CheckStyle-IDEA并设置_（点击File-&gt;Settings-&gt;Tools-&gt;Checkstyle导入）_即可使用。</p>
+<h3><span id="方式二扩展checkstyle">方式二：扩展CheckStyle</span></h3><p>若CheckStyle 提供的检测功能无法满足开发团队的规范，还可以扩展CheckStyle，编写自定义的检测逻辑，以检查相应的代码规范。</p>
+<p>以构建管理工具Maven为例，扩展步骤如下：</p>
+<h4><span id="新建maven项目并引入checkstyle依赖">新建Maven项目并引入CheckStyle依赖</span></h4><p><img src="https://cdn.jsdelivr.net/gh/LancePeng42/Pic-Bed/imgs/blog/IDEA-plugins/enew-project1.jpg" alt></p>
+<h4><span id="编写自定义的检测逻辑">编写自定义的检测逻辑</span></h4><p>继承<code>AbstractCheck</code>类，实现父类的抽象方法，编写自定义的代码检测逻辑。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MethodLimitCheck</span> <span class="keyword">extends</span> <span class="title">AbstractCheck</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> DEFAULT_MAX = <span class="number">50</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> max = DEFAULT_MAX;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 由此方法，可通过xml文件配置max属性，即最大方法数量</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setMax</span><span class="params">(<span class="keyword">int</span> limit)</span> </span>&#123;</span><br><span class="line">        max = limit;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] getDefaultTokens() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;TokenTypes.CLASS_DEF, TokenTypes.INTERFACE_DEF&#125;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] getAcceptableTokens() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] getRequiredTokens() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">visitToken</span><span class="params">(DetailAST ast)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 获取CLASS_DEF/INTERFACE_DEF 下的 OBJBLOCK 节点</span></span><br><span class="line">        DetailAST objBlock = ast.findFirstToken(TokenTypes.OBJBLOCK);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 计算 OBJBLOCK 节点下的直接 METHOD_DEFS，即方法数量</span></span><br><span class="line">        <span class="keyword">int</span> methodDefs = objBlock.getChildCount(TokenTypes.METHOD_DEF);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 若方法数量超过阈值， 则进行提示</span></span><br><span class="line">        <span class="keyword">if</span> (methodDefs &gt; <span class="keyword">this</span>.max) &#123;</span><br><span class="line">            String message = <span class="string">"方法数量过多，不宜超过 "</span> + <span class="keyword">this</span>.max + <span class="string">" 个方法"</span>;</span><br><span class="line">            log(ast.getLineNo(), message);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="打成jar包并配置checkstyle-idea">打成Jar包并配置CheckStyle-IDEA</span></h4><p>打包：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/LancePeng42/Pic-Bed/imgs/blog/IDEA-plugins/emaven-package2.jpg" alt></p>
+<p>配置CheckStyle-IDEA：</p>
+<p>先导入自定义的jar包</p>
+<p><img src="https://cdn.jsdelivr.net/gh/LancePeng42/Pic-Bed/imgs/blog/IDEA-plugins/echeckstyle-idea3.jpg" alt></p>
+<p>再导入相应的配置文件：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/LancePeng42/Pic-Bed/imgs/blog/IDEA-plugins/echeckstyle-idea4.jpg" alt></p>
+<p>配置文件内容如下：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0"?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE module PUBLIC</span></span><br><span class="line"><span class="meta">          "-//Checkstyle//DTD Checkstyle Configuration 1.3//EN"</span></span><br><span class="line"><span class="meta">          "https://checkstyle.org/dtds/configuration_1_3.dtd"&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">    Checkstyle 官网</span></span><br><span class="line"><span class="comment">    http://checkstyle.org.</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">    注释或删除规则，即可停用相应监测点。</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">    Author: Lance Peng</span></span><br><span class="line"><span class="comment">--&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">module</span> <span class="attr">name</span> = <span class="string">"Checker"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"charset"</span> <span class="attr">value</span>=<span class="string">"UTF-8"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"severity"</span> <span class="attr">value</span>=<span class="string">"error"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"fileExtensions"</span> <span class="attr">value</span>=<span class="string">"java, properties, xml"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">module</span> <span class="attr">name</span>=<span class="string">"TreeWalker"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">&lt;!-- 自定义的check配置 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">module</span> <span class="attr">name</span>=<span class="string">"live.daydream.checks.MethodLimitCheck"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"max"</span> <span class="attr">value</span>=<span class="string">"3"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">module</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;/<span class="name">module</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">module</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4><span id="检测运行">检测运行</span></h4><p>选择代码检测规范并运行：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/LancePeng42/Pic-Bed/imgs/blog/IDEA-plugins/echeckstyle-run5.jpg" alt></p>
+<p>结果如下：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/LancePeng42/Pic-Bed/imgs/blog/IDEA-plugins/eresult.jpg" alt></p>
+<h3><span id="进阶教程">进阶教程</span></h3><p><a href="https://checkstyle.org/extending.html" target="_blank" rel="noopener">CheckStyle扩展的官方教程</a></p>
+<p>“编译原理”相关书籍</p>
+<h3><span id="避坑指南">避坑指南</span></h3><ul>
+<li><p>在配置CheckStyle-IDEA，添加配置文件时，出现无法初始化check类的错误<br>若是自定义的check，导入配置文件中的<code>module</code>的<code>name</code>属性应为自定义check的全路径，即<code>package.className</code></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">module</span> <span class="attr">name</span>=<span class="string">"Checker"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">module</span> <span class="attr">name</span>=<span class="string">"TreeWalker"</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- CheckStyle 提供的标准check类配置 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">module</span> <span class="attr">name</span>=<span class="string">"UpperEll"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">module</span> <span class="attr">name</span>=<span class="string">"MethodLength"</span>/&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 自定义的check类，一般为‘TreeWalker’的子模块 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">module</span> <span class="attr">name</span>=<span class="string">"live.daydream.checks.MethodLimitCheck"</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- check类属性配置， 此处配置最大允许方法数量为2 --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"max"</span> <span class="attr">value</span>=<span class="string">"2"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">module</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">module</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">module</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://daydream.live/2020/08/21/IntelliJ-IDEA插件开发-基础入门篇之HelloWorld-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Lance Peng">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/favFlowerSquared.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Silver Daydream">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/08/21/IntelliJ-IDEA插件开发-基础入门篇之HelloWorld-1/" itemprop="url">IntelliJ-IDEA插件开发-基础入门篇之HelloWorld-1</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-08-21T22:13:38+08:00">
+                2020-08-21
               </time>
             
 
@@ -516,14 +691,13 @@
 
 <p>然后选择重新构建项目就可以了</p>
 <h1><span id="开发一个-helloworld-插件">开发一个 HelloWorld 插件</span></h1><p>熟悉开发流程，从 HelloWrold 开始。</p>
-<h2><span id="新建工程选择-gradle勾选java和intellij-platform-plugin">新建工程，选择 Gradle，勾选<code>Java</code>和<code>Intellij Platform Plugin</code>。</span></h2><p><img src="https://cdn.jsdelivr.net/gh/LancePeng42/Pic-Bed/imgs/blog/IDEA-plugins/%E6%96%B0%E5%BB%BA%E6%8F%92%E4%BB%B6%E9%A1%B9%E7%9B%AE.jpg" alt="新建一个 Gradle 的插件工程"></p>
+<h2><span id="新建工程选择-gradle勾选java和intellij-platform-plugin">新建工程，选择 Gradle，勾选<code>Java</code>和<code>Intellij Platform Plugin</code>。</span></h2><p><img src="https://cdn.jsdelivr.net/gh/LancePeng42/Pic-Bed/imgs/blog/IDEA-plugins/new-project0907.png" alt="新建一个 Gradle 的插件工程"></p>
 <p>填写好项目属性后，IDEA 会自动开始解析项目依赖，因为它要下载一个几百兆的 SDK 依赖包，所以会比较久。</p>
 <p><em>如遇到依赖<code>ideaIC-2020.1.1.zip</code>文件下载失败或 gradle build 过程中堆栈溢出，可参考<a href="https://blog.csdn.net/sawiii/article/details/105952995" target="_blank" rel="noopener">IDEA 插件开发之环境搭建</a>中关于该问题的解决步骤</em></p>
 <p>Gradle 依赖解析完成之后，项目结构如下图，其中 plugin.xml 是插件的配置，build.gradle 是项目依赖的配置（类比 pom.xml）。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/LancePeng42/Pic-Bed/imgs/blog/IDEA-plugins/%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84.jpg" alt="项目结构"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/LancePeng42/Pic-Bed/imgs/blog/IDEA-plugins/3build-success.png" alt="项目结构"></p>
 <h2><span id="创建一个-action">创建一个 Action</span></h2><p>Action 是 IDEA 中对事件响应的处理器，它的 actionPerformed 就像是 JS 中的 onClick 方法。可以看出来，插件的开发本质上跟 web、Android 的开发没有什么不同，因为都是事件驱动的编程。</p>
-<p>可以直接使用 IDEA 提供的 Action 生成器</p>
-<p><img src="https://cdn.jsdelivr.net/gh/LancePeng42/Pic-Bed/imgs/blog/IDEA-plugins/%E6%96%B0%E5%BB%BAAction%E7%B1%BB.jpg" alt="新建Action类"></p>
+<p>可以直接使用 IDEA 提供的 Action 生成器<br><img src="https://cdn.jsdelivr.net/gh/LancePeng42/Pic-Bed/imgs/blog/IDEA-plugins/new-action.png" alt="新建Action类"></p>
 <p><img src="https://cdn.jsdelivr.net/gh/LancePeng42/Pic-Bed/imgs/blog/IDEA-plugins/%E6%96%B0%E5%BB%BAAction%E7%B1%BB%E7%95%8C%E9%9D%A2.jpg" alt="新建Action类界面"></p>
 <p>插件 New Action 说明如下：</p>
 <ul>
@@ -540,7 +714,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;actions&gt;</span><br><span class="line">        &lt;!-- Add your actions here --&gt;</span><br><span class="line">        &lt;action id=&quot;daydream.hello.action&quot; class=&quot;live.daydream.HelloWorldAction&quot; text=&quot;HelloAction&quot;</span><br><span class="line">                description=&quot;Say Hello World&quot;&gt;</span><br><span class="line">            &lt;add-to-group group-id=&quot;HelpMenu&quot; anchor=&quot;last&quot;/&gt;</span><br><span class="line">        &lt;/action&gt;</span><br><span class="line">    &lt;/actions&gt;</span><br></pre></td></tr></table></figure>
 
 <p>新建 Action 继承 AnAction 类，插件实现的操作实现 actionPerformed 方法即可。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public class ExampleAction extends AnAction &#123;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void actionPerformed(AnActionEvent e) &#123;</span><br><span class="line">        Project project = e.getProject();</span><br><span class="line">        Messages.showMessageDialog(project,&quot;Hello IDEA!&quot;,&quot;Greeting&quot;,Messages.getInformationIcon());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public class HelloWorldAction extends AnAction &#123;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void actionPerformed(AnActionEvent e) &#123;</span><br><span class="line">        Project project = e.getProject();</span><br><span class="line">        Messages.showMessageDialog(project,&quot;Hello IDEA!&quot;,&quot;Greeting&quot;,Messages.getInformationIcon());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h2><span id="运行测试插件">运行测试插件</span></h2><p>代码写完之后，打开 Gradle 的界面，点击 runIde 就会启动一个安装了插件的 IDEA，然后就可以进行测试。</p>
 <p><img src="https://cdn.jsdelivr.net/gh/LancePeng42/Pic-Bed/imgs/blog/IDEA-plugins/runide.jpg" alt="runIde"></p>
@@ -548,10 +722,11 @@
 <p><img src="https://cdn.jsdelivr.net/gh/LancePeng42/Pic-Bed/imgs/blog/IDEA-plugins/HelloAction.jpg" alt="HelloAction"></p>
 <h1><span id="进阶教程">进阶教程</span></h1><p>可以先把官方文档看下，搞清脉络，概念，然后找一些开源插件项目学习。</p>
 <p>视频外网有一点，但也很少，也都只是入门，只能自己摸索，官方资料也不是面面俱到。</p>
-<p><a href="https://jetbrains.org/intellij/sdk/docs/basics/getting_started.html" target="_blank" rel="noopener">官方文档</a></p>
+<p><a href="https://jetbrains.org/intellij/sdk/docs/basics/getting_started.html" target="_blank" rel="noopener">官方文档-英文</a></p>
+<p><a href="https://kana112233.github.io/intellij-sdk-docs-cn/welcome.html" target="_blank" rel="noopener">官方文档-中文</a><em>（由热心开发者翻译）</em></p>
 <p><a href="https://www.yuque.com/xjt2016/xd2ir5" target="_blank" rel="noopener">一篇语雀上的开发指南</a></p>
-<p><a href="https://cloud.tencent.com/developer/article/1348741" target="_blank" rel="noopener">京东技术的一篇整体介绍</a></p>
-<p><a href="https://github.com/JetBrains/intellij-plugins" target="_blank" rel="noopener">官方例子集合</a></p>
+<p><a href="https://github.com/JetBrains/intellij-sdk-code-samples" target="_blank" rel="noopener">官方基础例子集合</a></p>
+<p><a href="https://github.com/JetBrains/intellij-plugins" target="_blank" rel="noopener">官方进阶例子集合</a></p>
 <p><a href="https://www.youtube.com/watch?time_continue=1&v=fVos38m3CU4&feature=emb_logo" target="_blank" rel="noopener">YouTube IDEA 插件开发 视频教程</a></p>
 <p><a href="https://www.bilibili.com/video/BV1Zi4y1b7fw" target="_blank" rel="noopener">Bilibili 黑马 IDEA 插件开发 视频教程</a></p>
 <p><strong>参考文章:</strong></p>
@@ -1791,7 +1966,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1813,7 +1988,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
