@@ -348,6 +348,24 @@
 <ul>
 <li><a href="https://jetbrains.org/intellij/sdk/docs/tutorials/code_inspections.html" target="_blank" rel="noopener">Code Inspections</a></li>
 </ul>
+<h2><span id="常用utils">常用Utils</span></h2><ul>
+<li><p>格式化代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">CodeStyleManager codeStyleManager = CodeStyleManager.getInstance(project);</span><br><span class="line">// reformat范围可自定义</span><br><span class="line">codeStyleManager.reformat(descriptor.getPsiElement());</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建WhiteSpace</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PsiElement newSpace = PsiParserFacade.SERVICE.getInstance(project).createWhiteSpaceFromText(&quot;\n&quot;);</span><br><span class="line">psiElement.addAfter(newSpace, psiElementFirstChild);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建其他元素</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">PsiElementFactory psiElementFactory = PsiElementFactory.getInstance(project);</span><br><span class="line">// psiElementFactory可create多种元素</span><br><span class="line">PsiComment commentFromText = psiElementFactory.createCommentFromText(field, psiElementParent);</span><br><span class="line">// context 需为 anchorElement 父容器</span><br><span class="line">context.addBefore(commentFromText, anchorElement);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>判断成员变量修饰符</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// psiField 为类成员变量</span><br><span class="line">psiField.getModifierList().hasModifierProperty(PsiKeyword.PUBLIC)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>判断Java常用字符(分号，逗号等等)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// token为需要判断的字符</span><br><span class="line">token.getTokenType().equals(JavaTokenType.SEMICOLON)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
 <p><strong>开发工具推荐</strong></p>
 <p>If you’re serious about plugin development you will need this one. Can’t live without it!</p>
 <ul>
